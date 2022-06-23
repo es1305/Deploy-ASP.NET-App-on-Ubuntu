@@ -1,4 +1,4 @@
-# DEV 14 [Optional]: Деплой приложений. ASP.NET
+# Ubuntu. Деплой приложения ASP.NET
 
 ## 1. Установка пакета SDK для .NET
 
