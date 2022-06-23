@@ -74,13 +74,13 @@ chown -R www-data:www-data /var/www
 ## 4. Настройка Nginx
 
 ```bash
-nano /etc/nginx/sites-available/es1305-www-1.devops.rebrain.srwx.net
+nano /etc/nginx/sites-available/example.com
 ```
 
 ```bash
 server {
     listen        80 default_server;
-    server_name   es1305-www-1.devops.rebrain.srwx.net;
+    server_name   example.com;
     location / {
         proxy_pass         http://127.0.0.1:8080;
         proxy_http_version 1.1;
@@ -95,7 +95,7 @@ server {
 ```
 
 ```bash
-ln -s /etc/nginx/sites-available/es1305-www-1.devops.rebrain.srwx.net /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 rm /etc/nginx/sites-enabled/default
 
 nginx -t
@@ -139,14 +139,14 @@ systemctl status eshoponweb
 
 ```bash
 apt install certbot python3-certbot-nginx
-certbot --nginx -d es1305-www-1.devops.rebrain.srwx.net
+certbot --nginx -d example.com
 
-nano /etc/nginx/sites-available/es1305-www-1.devops.rebrain.srwx.net
+nano /etc/nginx/sites-available/example.com
 ```
 
 ```bash
 server {
-    server_name   es1305-www-1.devops.rebrain.srwx.net;
+    server_name   example.com;
     location / {
         proxy_pass         http://127.0.0.1:8080;
         proxy_http_version 1.1;
@@ -159,20 +159,20 @@ server {
     }
 
     listen 443 ssl http2;
-    ssl_certificate /etc/letsencrypt/live/es1305-www-1.devops.rebrain.srwx.net/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/es1305-www-1.devops.rebrain.srwx.net/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
 }
 
 server {
-    if ($host = es1305-www-1.devops.rebrain.srwx.net) {
+    if ($host = example.com) {
         return 301 https://$host$request_uri;
     }
 
     listen        80 default_server;
-    server_name   es1305-www-1.devops.rebrain.srwx.net;
+    server_name   example.com;
     return 404;
 }
 ```
