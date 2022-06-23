@@ -168,12 +168,12 @@ server {
 
 server {
     if ($host = example.com) {
-        return 301 https://$host$request_uri;
+       return 301 https://$host$request_uri;
     }
 
-    listen        80 default_server;
-    server_name   example.com;
-    return        404;
+    listen      80 default_server;
+    server_name example.com;
+    return      404;
 }
 ```
 
