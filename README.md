@@ -158,11 +158,11 @@ server {
         proxy_set_header   X-Forwarded-Proto $scheme;
     }
 
-    listen 443 ssl http2;
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    listen              443 ssl http2;
+    ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    include             /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam         /etc/letsencrypt/ssl-dhparams.pem;
 
 }
 
@@ -173,7 +173,7 @@ server {
 
     listen        80 default_server;
     server_name   example.com;
-    return 404;
+    return        404;
 }
 ```
 
